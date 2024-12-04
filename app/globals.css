@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+  font-family: var(--font-montserrat);
+}
+
+/* Select all scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  /* Width of the scrollbar */
+}
+
+/* Handle/Thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #004899;
+  /* Color of the thumb */
+  border-radius: 5px;
+  /* Rounded corners */
+  height: 3px;
+  /* Height of the thumb */
+}
+
+@layer components {
+  .semi-bold-24 {
+    @apply text-xl font-semibold text-center tracking-[0.15px];
+  }
+
+  .semi-bold-20 {
+    @apply text-[12px] sm:text-md md:text-[20px] font-semibold text-center tracking-[0.15px] text-white;
+  }
+
+  .semi-bold-16 {
+    @apply text-lg font-semibold text-center tracking-[0.15px];
+  }
+
+  .semi-bold-14 {
+    @apply text-md font-semibold text-center tracking-[0.15px] text-white;
+  }
+
+  .semi-bold-12 {
+    @apply text-sm font-semibold text-center tracking-[0.15px] text-white;
+  }
+
+  .regular-14 {
+    @apply text-sm sm:text-md font-normal text-center tracking-[0.15px] text-white;
+  }
+
+  .regular-12 {
+    @apply text-sm font-normal text-center tracking-[0.15px] text-white;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col justify-center items-center;
+  }
+
+  .input:placeholder-shown,
+  .input::placeholder {
+    @apply font-bold text-sm sm:font-normal text-left tracking-[0.15px] text-placeholder;
+  }
+
+  .input:focus {
+    @apply border border-blue;
+  }
+
+  .input:hover {
+    @apply border border-[#646DF3];
+  }
+
+  .profile-item {
+    @apply w-full font-medium text-sm hover:bg-light-blue hover:font-semibold hover:text-blue cursor-pointer pl-5 p-3 border-b border-border-1;
+  }
+
+  .profile-item-disabled {
+    @apply w-full font-medium text-sm pl-5 p-3 border-b border-border-1 text-border-1;
+  }
+
+  .profile-item-red {
+    @apply font-medium text-sm hover:bg-light-blue hover:font-semibold cursor-pointer px-5 p-3 text-states-error hover:text-states-error;
+  }
+}
+
+.profile-shadow {
+  border-radius: 8px;
+  box-shadow: 0px -4px 4px 0px #0000000d;
+  box-shadow: 0px 4px 4px 0px #0000000d;
+}
+
+.navigation-shadow {
+  box-shadow: 0px -4px 4px 0px #0000000d;
+}
+
+.apexcharts-toolbar,
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon,
+.apexcharts-reset-icon,
+.apexcharts-menu-icon,
+.apexcharts-zoom-icon,
+.apexcharts-pan-icon {
+  display: none;
+}
+
+.gradient {
+  background: rgb(95, 0, 126);
+  background: linear-gradient(
+    90deg,
+    rgba(95, 0, 126, 1) 11%,
+    rgba(29, 1, 165, 0.8772759103641457) 39%,
+    rgba(1, 1, 181, 0.8044467787114846) 51%,
+    rgba(1, 30, 133, 0.8688725490196079) 73%,
+    rgba(255, 0, 0, 1) 95%
+  );
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #272833;
+}
+
+.dotted:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  border-top: 2px dashed #b0b0b0;
+  width: 100%;
+  height: 3px;
+  right: 0%;
+  top: 50%;
+}
+
+.dotted-active {
+  position: relative;
+  padding-right: 10px;
+  /* Adjust as needed for spacing */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.dotted-active:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  border-top: 2px solid #004899;
+  /* Color of the fill animation */
+  width: 0%;
+  /* Start with 0% width */
+  height: 3px;
+  left: 0;
+  /* Change from right to left */
+  top: 50%;
+  transform: translateY(-50%);
+  animation: fill-line 0.5s forwards;
+  /* Adjust duration as needed */
+}
+
+.borderB:not(:last-child) {
+  border-bottom: 1px solid #d1d5db;
+}
+
+@keyframes fill-line {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.select-input {
+  border: none;
+}
+
+.input {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.input:placeholder-shown {
+  color: #64748b;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* Base styles to hide the scrollbar */
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+  overflow: -moz-scrollbars-none;
+  /* Old versions of Firefox */
+}
+
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
+}
+
+/* Hover state to show the scrollbar */
+.hide-scroll-bar:hover {
+  overflow: auto;
+}
+
+.hide-scroll-bar:hover::-webkit-scrollbar {
+  display: block;
+  /* Safari and Chrome */
+}
+
+.download-report-btn:hover {
+  background-color: #004899;
+  border-radius: 10px;
+}

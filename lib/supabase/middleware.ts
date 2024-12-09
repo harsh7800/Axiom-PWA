@@ -42,8 +42,8 @@ export const updateSession = async (request: NextRequest) => {
     } = await supabase.auth.getUser();
 
     if (!user) {
-      const loginUrl = `${process.env.NEXT_PUBLIC_PROD_SITE_URL}/login`;
-      const signupUrl = `${process.env.NEXT_PUBLIC_PROD_SITE_URL}/signup`;
+      // const loginUrl = `${process.env.NEXT_PUBLIC_PROD_SITE_URL}/login`;
+      // const signupUrl = `${process.env.NEXT_PUBLIC_PROD_SITE_URL}/signup`;
 
       // Redirect to signup if the user is trying to access the signup page
       if (request.nextUrl.pathname === "/signup") {

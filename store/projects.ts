@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 type Project = {
-  id: number;
+  id: string;
   project_name: string;
   bottle: string;
   preform: string;
@@ -11,6 +11,12 @@ type Project = {
   created_by: string;
   inputs: {
     inputData: Record<string, unknown>; // Flexible type for nested input data
+  };
+
+  files: {
+    bottle: Record<string, string>;
+    preform: Record<string, string>;
+    resins: Record<string, string>;
   };
 };
 

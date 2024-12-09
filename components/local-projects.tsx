@@ -33,19 +33,7 @@ import {
 } from "@/components/ui/hover-card";
 import useProjectStore from "@/store/projects";
 import { cn } from "@/lib/utils";
-
-interface Project {
-  id: string; // Unique identifier for the project
-  project_name: string | number; // Project name, could be a string or number based on the given data
-  created_by: string; // Creator of the project
-  created_on: string; // ISO 8601 formatted timestamp
-  bottle: string; // Bottle type or name
-  preform: string; // Preform type or name
-  resins: string; // JSON string of resins (should be parsed to an array if used in logic)
-  inputs: {
-    inputData: Record<string, unknown>; // Flexible type for nested input data
-  };
-}
+// import { ipcRenderer } from "electron";
 
 const LocalProjectsTable = () => {
   const { projects } = useProjectStore((state) => state);
@@ -64,16 +52,57 @@ const LocalProjectsTable = () => {
     return formattedDate;
   }
 
-  function downloadJsonFile(data: Project, filename = "data.json") {
-    const jsonBlob = new Blob([JSON.stringify(data, null, 2)], {
-      type: "application/json",
-    });
+  // const handleDownload = async (project) => {
+  //   const { files } = project;
+  //   const { bottle, preform, resins } = files;
 
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(jsonBlob);
-    link.download = filename;
-    link.click();
-  }
+  //   // Create an array to hold all the download promises
+  //   const downloadPromises = [];
+
+  //   // Create a new folder to hold all the downloaded files
+  //   const folderName = `${project.project_name}-downloads`;
+  //   const folderPath = `${__dirname}/${folderName}`;
+
+  //   // Create the folder if it doesn't exist
+  //   if (!fs.existsSync(folderPath)) {
+  //     fs.mkdirSync(folderPath);
+  //   }
+
+  //   // Function to download each file and save it to the folder
+  //   const downloadFile = (fileUrl, fileName) => {
+  //     return fetch(fileUrl)
+  //       .then((response) => response.blob())
+  //       .then((blob) => {
+  //         const filePath = `${folderPath}/${fileName}`;
+  //         const fileStream = fs.createWriteStream(filePath);
+
+  //         return new Promise((resolve, reject) => {
+  //           fileStream.on("error", (err) => reject(err));
+  //           fileStream.on("finish", () => resolve());
+  //           response.body.pipe(fileStream);
+  //         });
+  //       });
+  //   };
+
+  //   // Download bottle files
+  //   for (const [key, fileUrl] of Object.entries(bottle)) {
+  //     downloadPromises.push(downloadFile(fileUrl, `bottle-${key}`));
+  //   }
+
+  //   // Download preform files
+  //   for (const [key, fileUrl] of Object.entries(preform)) {
+  //     downloadPromises.push(downloadFile(fileUrl, `preform-${key}`));
+  //   }
+
+  //   // Download resin files
+  //   for (const [key, fileUrl] of Object.entries(resins)) {
+  //     downloadPromises.push(downloadFile(fileUrl, `resin-${key}`));
+  //   }
+
+  //   // Wait for all downloads to complete
+  //   await Promise.all(downloadPromises);
+  //   alert(`All files have been downloaded to the "${folderName}" folder!`);
+  // };
 
   return (
     <section className="mt-10">
@@ -144,12 +173,10 @@ const LocalProjectsTable = () => {
                   </TableCell>
                   <TableCell className="font-semibold text-md">
                     <FileDown
-                      onClick={() =>
-                        downloadJsonFile(project as any, project.bottle)
-                      }
-                      // onClick={() =>
-                      //   ipcRenderer.send(project.project_name, project)
-                      // }
+                      onClick={
+                        () => console.log("first")
+                        // ipcRenderer.invoke("download-project-files", project)
+                      } // Send the project to Electron
                       className="text-blue cursor-pointer hover:scale-125 transition-all"
                     />
                   </TableCell>

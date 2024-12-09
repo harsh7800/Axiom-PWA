@@ -114,7 +114,7 @@ const CreateProjectPanel = ({ projectData }: any) => {
             }}
           >
             <Link
-              href="/new-project"
+              href="/create-project"
               className="flex items-center cursor-pointer p-3"
             >
               {!loading ? (

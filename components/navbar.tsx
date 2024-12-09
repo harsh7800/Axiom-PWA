@@ -1,5 +1,4 @@
-import Pepsico from "@/public/pepsico.png";
-
+// import Pepsico from "@/public/pepsico.png";
 import Image from "next/image";
 import Link from "next/link";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
@@ -15,13 +14,13 @@ const Navbar = async () => {
           material comparison
         </h2>
       </div>
-      <Image
+      {/* <Image
         width={50}
         className="border-0 rounded-full bg-white p-[4px]"
         height={50}
         src={Pepsico}
         alt="pepsico"
-      />
+      /> */}
 
       <div className="flex-center gap-2">
         <Link href="/">

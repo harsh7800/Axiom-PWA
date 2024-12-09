@@ -66,6 +66,8 @@ app.whenReady().then(() => {
   });
 });
 
+app.commandLine.appendSwitch("enable-logging");
+
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });

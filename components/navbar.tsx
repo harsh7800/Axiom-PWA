@@ -1,5 +1,4 @@
 // import Pepsico from "@/public/pepsico.png";
-import Image from "next/image";
 import Link from "next/link";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { ChevronDown, CircleUser, Home } from "lucide-react";

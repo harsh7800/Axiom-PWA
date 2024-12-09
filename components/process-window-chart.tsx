@@ -33,13 +33,11 @@ import { useGraphPlotData } from "@/store/zustand-store";
 
 const StraightChart = ({
   data,
-  chartID,
   resize,
   setListBottleZones,
   listBottleZones = 0,
 }: {
   data: pearlescenceSeriesType[];
-  chartID: string;
   resize: boolean;
   listBottleZones: any;
   setListBottleZones: any;
@@ -133,7 +131,7 @@ const StraightChart = ({
             ]),
         },
         chart: {
-          id: chartID,
+          id: "1",
           height: 430,
           type: "line",
           animations: {
@@ -297,7 +295,7 @@ const StraightChart = ({
       xaxis: annotations2,
     },
     chart: {
-      id: chartID,
+      id: "2",
       height: 430,
       type: "line",
       animations: {

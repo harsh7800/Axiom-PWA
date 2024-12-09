@@ -158,24 +158,26 @@ const DownloadReport = () => {
           }
           fileName={`${inputData.materialInfo.bottle}.pdf`}
         >
-          {({ loading }: { loading: boolean }) => (
-            <Button
-              disabled={loading}
-              className={cn(
-                "w-full sm:w-fit bg-blue text-white text-md px-4 rounded-[8px]",
-                loading && "text-blue font-bold"
-              )}
-            >
-              {loading ? (
-                "Loading..."
-              ) : (
-                <span className="flex items-center gap-2">
-                  <DownloadIcon size={20} />
-                  {" Download Report"}
-                </span>
-              )}
-            </Button>
-          )}
+          {({ loading }: any) => {
+            return (
+              <Button
+                disabled={loading}
+                className={cn(
+                  "w-full sm:w-fit bg-blue text-white text-md px-4 rounded-[8px]",
+                  loading && "text-blue font-bold"
+                )}
+              >
+                {loading ? (
+                  "Loading..."
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <DownloadIcon size={20} />
+                    {" Download Report"}
+                  </span>
+                )}
+              </Button>
+            );
+          }}
         </PDFDownloadLink>
       )}
 

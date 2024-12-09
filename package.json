@@ -59,7 +59,8 @@
     "dev": "npm-run-all --parallel electron:dev next:dev",
     "electron:build_watch": "tsup --watch",
     "electron:dev": "npm-run-all --parallel electron:build_watch electron:watch",
-    "electron:watch": "cross-env NODE_ENV='development' nodemon"
+    "electron:watch": "cross-env NODE_ENV='development' nodemon",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\""
   },
   "dependencies": {
     "@electron-toolkit/utils": "^3.0.0",
@@ -112,6 +113,7 @@
     "cross-env": "^7.0.3",
     "electron": "^33.2.1",
     "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "nodemon": "^3.1.7",
